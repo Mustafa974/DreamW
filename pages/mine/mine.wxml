@@ -1,0 +1,70 @@
+<!--pages/mine/mine.wxml-->
+
+<!-- MineTopSection -->
+<view class='mineTop'>
+  <van-row>
+    <van-col span='6'>
+      <view class="mineLogo" bindtap='changeUserInfo'>
+        <open-data type="userAvatarUrl" class="mineAvatar"></open-data>
+      </view>
+    </van-col>
+    <van-col span='18'>
+      <van-row custom-class='mineNick'>{{ userInfo.name }}</van-row>
+    </van-col>
+  </van-row>
+</view>
+
+<!-- MineSettings List -->
+<view class='listContainer'>
+  <!-- Info -->
+  <wux-cell-group>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/name.png'></image>
+      <text class='mineTitle'>姓名</text>
+      <text class='mineData'>{{ userInfo.name }}</text>
+      <!-- <van-cell title="姓名" size="large" title-class="mineList" value="{{ userInfo.name }}" /> -->
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/gender.png' style='height:47rpx'></image>
+      <text class='mineTitle'>性别</text>
+      <text class='mineData'>{{ userInfo.gender }}</text>
+      <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/age.png' style='height:47rpx'></image>
+      <text class='mineTitle'>年龄</text>
+      <text class='mineData'>{{ userInfo.age }}</text>
+      <!-- <van-cell title="电话" size="large" title-class="mineList" value="{{ userInfo.phone }}" /> -->
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/phone.png' style='height:47rpx'></image>
+      <text class='mineTitle'>电话</text>
+      <text class='mineData'>{{ userInfo.phone }}</text>
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/email.png' style='height:45rpx'></image>
+      <text class='mineTitle'>邮箱</text>
+      <text class='mineData'>{{ userInfo.email }}</text>
+    </view>
+    <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/des.png' style='height:47rpx'></image>
+      <text class='mineTitle'>简介</text>
+      <text class='mineData'>{{ userInfo.selfInfo }}</text>
+    </view>
+    <!-- <view class='listVerti'>
+      <image class='mineImg' src='/assets/icons/id.png' style='height:47rpx'></image>
+      <text class='mineTitle'>身份</text>
+      <text class='mineData'>{{ userInfo.type }}</text>
+    </view> -->
+  </wux-cell-group>
+  <!-- Functions -->
+  <wux-cell-group>
+    <view class='listMid'>
+      <van-cell title="管理申请信息" size="large" title-class="mineList" isLink bind:click='onClickHistory'/>
+      <van-cell title="修改个人信息" size="large" title-class="mineList" isLink bind:click='changeUserInfo' />
+    </view>
+  </wux-cell-group>
+</view>
+
+<!-- Shadow -->
+<view class='ShadowBottom'></view>

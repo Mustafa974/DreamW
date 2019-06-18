@@ -1,0 +1,24 @@
+<!--pages/history/history.wxml-->
+<import src="../../template/order/order.wxml" />
+
+<!-- Application Section -->
+<scroll-view class="scroll" scroll-y="true">
+  <van-tabs color="#92B6D5" type="card" v-model="active" custom-class='topSelection'>
+    <van-tab title="入队申请">
+      <!-- for each order in ordersInfo -->
+      <view wx:for="{{ordersInfo}}" wx:for-item="orderItem" class='forClass'>
+        <template is="order0" data="{{orderItem}}" />
+      </view>
+    </van-tab>
+    <van-tab title="上传申请">
+      <view wx:for="{{orderList1}}" wx:for-item="orderItem" class='forClass'>
+        <template is="order2" data="{{orderItem}}" />
+      </view>
+    </van-tab>
+  </van-tabs>
+  
+</scroll-view>
+
+<van-dialog show="{{ show01 }}" bind:cancel="onCancel" bind:confirm="onPay" show-cancel-button="true" message="是否确认支付？"/>
+
+<van-dialog show="{{ show02 }}" bind:cancel="onCancel" bind:confirm="onDelivery" show-cancel-button="true" message="是否确认收货？"/>

@@ -1,0 +1,30 @@
+<!--pages/editInfo/editInfo.wxml-->
+<view class='infoContainer'>
+  <form report-submit='true' bindsubmit='setNotice'>
+    <!-- sheet -->
+    <wux-cell-group title="修改个人信息">
+      <!-- 姓名 -->
+      <van-field value="{{ input.name }}" clearable label="姓名" placeholder="您的姓名" bind:change="onChange01" />
+      <!-- 性别 -->
+      <picker bindchange="onChange02" value="{{index}}" range="{{genders}}">
+        <view class="picker">
+          <van-field value="{{ input.gender }}" clearable placeholder="{{ input.gender }}" label="性别" />
+        </view>
+      </picker>
+      <!-- 年龄 -->
+      <picker bindchange="onChange03" value="{{index}}" range="{{ages}}">
+        <view class="picker">
+          <van-field value="{{ input.age }}" clearable placeholder="{{ input.age }}" label="年龄" />
+        </view>
+      </picker>
+      <!-- 电话 -->
+      <!-- <van-field value="{{ input.phone }}" clearable type="phone" label="电话" placeholder="{{ input.phone }}" maxlength='11' bind:change="onChange04" />
+      <!-- email -->
+      <!-- <van-field value="{{ input.email }}" clearable type="email" label="邮箱" placeholder="{{ input.email }}" bind:change="onChange05" /> -->
+      <!-- selfInfo -->
+      <van-field value="{{ input.selfInfo }}" clearable type="selfInfo" label="简介" placeholder="{{ input.selfInfo }}" bind:change="onChange06" />
+    </wux-cell-group>
+  </form>
+  <!-- submit button -->
+  <button class='loginButton' bindtap="changeInfo">提交修改</button>
+</view>

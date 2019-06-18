@@ -1,0 +1,181 @@
+<!--pages/order/order.wxml-->
+<wxs module="filters">
+  var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+  module.exports = {
+    toFix: filters.toFix
+  }
+</wxs>
+
+<!-- team application Template -->
+<template name="order0">
+  <view class="order_container">
+    <view class='row'>
+      <text class='inner-left'></text>
+      <text class='inner-right text02' style='margin-top:15rpx;'>申请时间：{{orderItem.time}}</text>
+    </view>
+    <!-- team image -->
+    <view class='row02'>
+      <image class="bookImg" src="{{orderItem.teamInfo.picUrl}}"  data-bookid="{{orderItem.appliId}}" catchtap='toPage'></image>
+      <view class="column">
+        <!-- book detail -->
+        <text class="bookTitle" data-bookid="{{orderItem.appliId}}" bindtap='toPage'>{{orderItem.teamInfo.name}}</text>
+        <text class="text03" data-bookid="{{orderItem.appliId}}" bindtap='toPage'>班级标签：{{orderItem.teamInfo.label}}</text>
+        <view class='row'>
+          <text class="text02" data-bookid="{{bookItem.appliId}}" bindtap='toPage' style='margin-left:200rpx;margin-bottom:10rpx;font-size:27rpx'>当前人数：</text>
+          <text class='text01' style='margin-bottom:10rpx;'>{{orderItem.teamInfo.memberNum}}</text>
+          <text class='text02'style='margin-left:7rpx;margin-bottom:10rpx;'>人</text>
+        </view>
+      </view>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>申请人信息：</text>
+      <text class='text01'>{{orderItem.userInfo.name}}</text>
+      <!-- <image class='icon' src='/assets/icons/location.png'></image> -->
+      <text class='text02'>/{{orderItem.userInfo.gender}}/{{orderItem.userInfo.age}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>联系电话：</text>
+      <text class='text02'>{{orderItem.userInfo.phone}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>电子邮箱：</text>
+      <text class='text02'>{{orderItem.userInfo.email}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>个人简介：</text>
+      <text class='text02'>{{orderItem.userInfo.selfInfo}}</text>
+    </view>
+    <!-- <view class='bt_container'> -->
+      <!-- <view wx:if="{{orderItem.type==0}}" class='statusBt status0'>允许入队</view>
+      <view wx:elif="{{orderItem.type==1}}" class='statusBt status1'>允许发帖</view> -->
+      <!-- <view class='statusBt status2' data-id='{{orderItem.appliId}}' data-type='0' bindtap='passApplication'>通过申请</view> -->
+    <!-- </view> -->
+  </view>
+</template>
+
+<!-- publish article Template -->
+<template name="order1">
+  <view class="order_container">
+    <view class='row'>
+      <text class='inner-left'></text>
+      <text class='inner-right text02' style='margin-top:15rpx;'>申请时间：{{orderItem.time}}</text>
+    </view>
+    <!-- team image -->
+    <view class='row02'>
+      <view class="column">
+        <!-- book detail -->
+        <text class="bookTitle" style='margin-top: 5rpx;margin-left: 10px' data-id="{{orderItem.articleInfo.url}}" bindtap='toAriticle'>{{orderItem.articleInfo.title}}</text>
+        <text class="text04" data-id="{{orderItem.articleInfo.url}}" bindtap='toAriticle'>{{orderItem.articleInfo.content}}</text>
+      </view>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>申请人信息：</text>
+      <text class='text01'>{{orderItem.userInfo.name}}</text>
+      <!-- <image class='icon' src='/assets/icons/location.png'></image> -->
+      <text class='text02'>/{{orderItem.userInfo.gender}}/{{orderItem.userInfo.age}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>联系电话：</text>
+      <text class='text02'>{{orderItem.userInfo.phone}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>电子邮箱：</text>
+      <text class='text02'>{{orderItem.userInfo.email}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>个人简介：</text>
+      <text class='text02'>{{orderItem.userInfo.selfInfo}}</text>
+    </view>
+    <view class='bt_container'>
+      <!-- <view wx:if="{{orderItem.type==0}}" class='statusBt status0'>允许入队</view>
+      <view wx:elif="{{orderItem.type==1}}" class='statusBt status1'>允许发帖</view> -->
+      <view class='statusBt status2' data-id='{{orderItem.aid}}' data-type='1'   bindtap='passApplication'>通过申请</view>
+    </view>
+  </view>
+</template>
+
+<!-- upload file Template -->
+<template name="order2">
+  <view class="order_container">
+    <!-- <view class='row'>
+      <text class='inner-left'></text>
+      <text class='inner-right text02' style='margin-top:15rpx;'>申请时间：{{orderItem.time}}</text>
+    </view> -->
+    <!-- team image -->
+    <view class='row02'>
+      <image class="fileImg" src="{{orderItem.fileInfo.fileUrl}}"  data-bookid="{{orderItem.appliId}}" catchtap='toPage'></image>
+      <view class="column" style='width:394rpx'>
+        <!-- book detail -->
+        <text class="bookTitle" style='margin-top: 30rpx;' data-bookid="{{orderItem.appliId}}" bindtap='toPage'>{{orderItem.fileInfo.title}}</text>
+      </view>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>申请人信息：</text>
+      <text class='text01'>{{orderItem.userInfo.name}}</text>
+      <!-- <image class='icon' src='/assets/icons/location.png'></image> -->
+      <text class='text02'>/{{orderItem.userInfo.gender}}/{{orderItem.userInfo.age}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>联系电话：</text>
+      <text class='text02'>{{orderItem.userInfo.phone}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>电子邮箱：</text>
+      <text class='text02'>{{orderItem.userInfo.email}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>个人简介：</text>
+      <text class='text02'>{{orderItem.userInfo.selfInfo}}</text>
+    </view>
+    <!-- <view class='bt_container'> -->
+      <!-- <view wx:if="{{orderItem.type==0}}" class='statusBt status0'>允许入队</view>
+      <view wx:elif="{{orderItem.type==1}}" class='statusBt status1'>允许发帖</view> -->
+      <!-- <view class='statusBt status2' data-id='{{orderItem.appliId}}' data-type='2'   bindtap='passApplication'>通过申请</view> -->
+    <!-- </view> -->
+  </view>
+</template>
+
+<!-- all files Template -->
+<template name="order3">
+  <view class="order_container">
+    <view class='row'>
+      <text class='inner-left'></text>
+      <text class='inner-right text02' style='margin-top:15rpx;'>发布时间：{{orderItem.time}}</text>
+    </view>
+    <!-- team image -->
+    <view class='row02'>
+      <view class="column">
+        <!-- book detail -->
+        <text class="bookTitle" style='margin-top: 5rpx;margin-left: 10px' data-id="{{orderItem.articleInfo.url}}" bindtap='toAriticle'>{{orderItem.articleInfo.title}}</text>
+        <text class="text04" data-id="{{orderItem.articleInfo.url}}" bindtap='toAriticle'>{{orderItem.articleInfo.content}}</text>
+      </view>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>申请人信息：</text>
+      <text class='text01'>{{orderItem.userInfo.name}}</text>
+      <!-- <image class='icon' src='/assets/icons/location.png'></image> -->
+      <text class='text02'>/{{orderItem.userInfo.gender}}/{{orderItem.userInfo.age}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>联系电话：</text>
+      <text class='text02'>{{orderItem.userInfo.phone}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>电子邮箱：</text>
+      <text class='text02'>{{orderItem.userInfo.email}}</text>
+    </view>
+    <view class='row inner-left'>
+      <text class='text02'>个人简介：</text>
+      <text class='text02'>{{orderItem.userInfo.selfInfo}}</text>
+    </view>
+    <!-- <view class='bt_container'> -->
+      <!-- <view wx:if="{{orderItem.type==0}}" class='statusBt status0'>允许入队</view>
+      <view wx:elif="{{orderItem.type==1}}" class='statusBt status1'>允许发帖</view> -->
+      <!-- <view class='statusBt status2' data-id='{{orderItem.aid}}' data-type='1'   bindtap='passApplication'>通过申请</view>
+    </view> -->
+  </view>
+</template>
